@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abuntu Clinic — Vereeniging Gauteng</title>
+<link href="https://fonts.googleapis.com/css2?family=Canvans+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body {
+    font-family: 'Canva Sans', 'Gill Sans', 'Trebuchet MS', sans-serif;
+    background-color: #bea995;
+    color: #f3f6f7;
+    overflow-x: hidden;
+    width: 100%;
+  }
+  img { max-width: 100%; height: auto; display: block; object-fit: cover; }
+
+  /* ── CSS VARIABLES ── */
+  :root {
+    --bg: #bea995;
+    --bg-dark: #a6907e;
+    --text-light: #f3f6f7;
+    --text-sub: #e9ebea;
+    --banner-bg: #737373;
+    --btn-bg: #8a6f5e;
+    --btn-hover: #6e5548;
+    --gap: 50px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(96, 74, 62, 0.92);
+    backdrop-filter: blur(8px);
+    padding: 14px 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+  }
+  nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 4px 0;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  nav a:hover { opacity: 0.7; }
+
+  /* ── SECTION WRAPPER ── */
+  section {
+    width: 100%;
+    background-color: var(--bg);
+    padding-top: 80px; /* nav offset */
+  }
+  section:first-of-type { padding-top: 0; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #8a6f5e, transparent);
+    margin: 0;
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block;
+    background: var(--btn-bg);
+    color: var(--text-light);
+    padding: 14px 36px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.25s, transform 0.15s;
+    text-decoration: none;
+    min-width: 220px;
+    max-width: 482px;
+    width: 100%;
+    height: 48px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn:hover { background: var(--btn-hover); transform: translateY(-1px); }
+  .btn-center { display: flex; justify-content: center; padding: 40px 20px; }
+
+  /* ══════════════════════════════
+     PAGE 1 — HOME / HERO
+  ══════════════════════════════ */
+  #home {
+    padding-top: 60px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    padding: 60px 60px 40px 60px;
+    gap: 40px;
+  }
+  .hero-left {}
+  .hero-left h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-light);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero-left h2 {
+    font-size: 39.5px;
+    font-weight: 600;
+    color: #e9ebea;
+    margin-bottom: 24px;
+    line-height: 1.25;
+  }
+  .hero-left p {
+    font-size: 19px;
+    color: #1a1a1a;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 520px;
+  }
+  .hero-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+  }
+  .hero-right img {
+    width: 100%;
+    max-width: 560px;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* ══════════════════════════════
+     PAGE 2 — SERVICES
+  ══════════════════════════════ */
+  #services {
+    padding: 80px 40px 60px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .service-card {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  .service-card-body {
+    padding: 24px 20px 28px;
+    flex: 1;
+  }
+  .service-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-light);
+  }
+  .service-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #f0eeec;
+  }
+
+  /* ══════════════════════════════
+     PAGE 3 — MENTAL WELLNESS
+  ══════════════════════════════ */
+  #mental-wellness { padding: 80px 0 0; }
+  .banner {
+    width: 100%;
+    height: 220px;
+    background: var(--banner-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .banner h2 { font-size: 32px; color: #fff; font-weight: 700; letter-spacing: 0.03em; }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 56px 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .bullet-list { list-style: none; }
+  .bullet-list li {
+    font-size: 26.9px;
+    color: var(--text-light);
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    line-height: 1.35;
+  }
+  .bullet-list li::before {
+    content: '•';
+    color: #8a6f5e;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  .two-col img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* ══════════════════════════════
+     PAGE 4 — PATIENT JOURNEY
+  ══════════════════════════════ */
+  #patient-journey {
+    padding: 104px 40px 60px;
+  }
+  .journey-heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  .journey-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .journey-box {
+    background: var(--bg-dark);
+    width: 213.8px;
+    min-height: 189.2px;
+    border-radius: 6px;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .journey-box h4 {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .journey-box p {
+    font-size: 13.5px;
+    color: var(--text-light);
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+  .step-num {
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(243,246,247,0.18);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  /* ══════════════════════════════
+     PAGE 5 — NUTRITIONAL COUNSELING
+  ══════════════════════════════ */
+  #nutritional-counseling { padding: 80px 0 0; }
+  .two-col-rev {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 56px 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .two-col-rev img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* ══════════════════════════════
+     PAGE 6 — FEATURES GRID
+  ══════════════════════════════ */
+  #features {
+    padding: 128px 40px 60px;
+  }
+  .features-heading {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .features-heading h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-light);
+  }
+  .features-heading p {
+    font-size: 18px;
+    color: #e9ebea;
+    margin-top: 10px;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap);
+    max-width: 900px;
+    margin: 48px auto 0;
+  }
+  .feature-box {
+    background: var(--bg-dark);
+    border-radius: 6px;
+    padding: 32px 28px;
+    color: #fff;
+  }
+  .feature-box h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .feature-box p {
+    font-size: 14px;
+    line-height: 1.65;
+    opacity: 0.88;
+  }
+
+  /* ══════════════════════════════
+     PAGE 7 — CONTACT FORM
+  ══════════════════════════════ */
+  #contact {
+    padding: 80px 40px 80px;
+  }
+  .contact-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-wrap h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 10px;
+  }
+  .contact-wrap > p {
+    font-size: 18px;
+    color: #e9ebea;
+    margin-bottom: 40px;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 22px;
+  }
+  .form-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .form-field input {
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(243,246,247,0.35);
+    color: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 14px 16px;
+    border-radius: 4px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-field input::placeholder { color: rgba(255,255,255,0.45); }
+  .form-field input:focus { border-color: rgba(243,246,247,0.75); }
+  .submit-btn {
+    width: 100%;
+    max-width: 482px;
+    height: 48px;
+    background: var(--btn-bg);
+    color: #fff;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+    transition: background 0.25s, transform 0.15s;
+  }
+  .submit-btn:hover { background: var(--btn-hover); transform: translateY(-1px); }
+
+  /* ══════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════ */
+  @media (max-width: 960px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      padding: 40px 30px 30px;
+      text-align: center;
+    }
+    .hero-left p { max-width: 100%; margin-left: auto; margin-right: auto; }
+    .hero-right { justify-content: center; padding-right: 0; }
+    .hero-right img { max-width: 100%; height: auto; }
+    .btn { max-width: 100%; }
+
+    .services-grid { grid-template-columns: 1fr; max-width: 500px; }
+
+    .two-col, .two-col-rev {
+      grid-template-columns: 1fr;
+      padding: 40px 30px;
+    }
+    .two-col img, .two-col-rev img { height: 260px; }
+    .bullet-list li { font-size: 20px; }
+
+    .journey-boxes { gap: 16px; }
+    .journey-box { width: calc(50% - 10px); }
+
+    .features-grid { grid-template-columns: 1fr; gap: 24px; }
+
+    nav { padding: 12px 20px; gap: 4px 12px; }
+    nav a { font-size: 12px; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-left h1 { font-size: 28px; }
+    .hero-left h2 { font-size: 24px; }
+    .hero-left p { font-size: 16px; }
+    .banner h2 { font-size: 24px; }
+    .bullet-list li { font-size: 17px; }
+    .journey-box { width: 100%; }
+    .journey-heading { font-size: 26px; }
+    .features-heading h2 { font-size: 26px; }
+    .contact-wrap h2 { font-size: 26px; }
+    #features { padding-top: 80px; }
+    #patient-journey { padding-top: 80px; }
+    nav { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── GLOBAL NAV ── -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+  <a href="#mental-wellness">Mental Wellness</a>
+  <a href="#patient-journey">Patient Journey</a>
+  <a href="#features">Features</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- ══ PAGE 1 — HOME ══ -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1>Abuntu Clinic, Vereeniging Gauteng</h1>
+      <h2>Compassionate Care, Advanced Medicine</h2>
+      <p>Abuntu Clinic delivers world-class healthcare with a deeply personal touch. From emergency response to specialist consultations — your health, our priority.</p>
+      <a href="#contact" class="btn">Book Appointment</a>
+    </div>
+    <div class="hero-right">
+      <img
+        src="https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        alt="Modern nude-toned consultation room"
+        loading="lazy"
+      />
+    </div>
+  </div>
+  <div class="divider"></div>
+</section>
+
+<!-- ══ PAGE 2 — SERVICES ══ -->
+<section id="services">
+  <div class="services-grid">
+    <div class="service-card">
+      <img
+        src="https://images.pexels.com/photos/6129049/pexels-photo-6129049.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        alt="Modern mental health consultation room"
+        loading="lazy"
+      />
+      <div class="service-card-body">
+        <h3>Mental Health Support</h3>
+        <p>Comprehensive support for mental health and emotional well-being.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img
+        src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        alt="Calming physical exercise therapy"
+        loading="lazy"
+      />
+      <div class="service-card-body">
+        <h3>Physical Therapy</h3>
+        <p>Tailored therapies and rehabilitation to enhance physical function.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img
+        src="https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        alt="Fresh colorful fruits for nutrition"
+        loading="lazy"
+      />
+      <div class="service-card-body">
+        <h3>Nutritional Counseling</h3>
+        <p>Personalized meal plans and educational workshops for better nutrition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PAGE 3 — MENTAL WELLNESS ══ -->
+<section id="mental-wellness">
+  <div class="banner">
+    <h2>Mental Wellness</h2>
+  </div>
+  <div class="two-col">
+    <ul class="bullet-list">
+      <li>Individual therapy sessions</li>
+      <li>Group workshops available</li>
+      <li>Community support groups</li>
+    </ul>
+    <img
+      src="https://images.pexels.com/photos/6624862/pexels-photo-6624862.jpeg?auto=compress&cs=tinysrgb&w=1600"
+      alt="Warm calm therapy room interior"
+      loading="lazy"
+    />
+  </div>
+  <div class="btn-center">
+    <a href="#contact" class="btn">Start Your Wellness Journey</a>
+  </div>
+</section>
+
+<!-- ══ PAGE 4 — PATIENT JOURNEY ══ -->
+<section id="patient-journey">
+  <h2 class="journey-heading">Patient Journey</h2>
+  <div class="journey-boxes">
+    <div class="journey-box">
+      <div class="step-num">01</div>
+      <h4>Consultation</h4>
+      <p>Initial discussion to understand your needs, goals, and current health status.</p>
+    </div>
+    <div class="journey-box">
+      <div class="step-num">02</div>
+      <h4>Assessment</h4>
+      <p>Comprehensive health evaluation using advanced diagnostic tools and expertise.</p>
+    </div>
+    <div class="journey-box">
+      <div class="step-num">03</div>
+      <h4>Planning</h4>
+      <p>A customized approach designed specifically around your individual health journey.</p>
+    </div>
+    <div class="journey-box">
+      <div class="step-num">04</div>
+      <h4>Implementation</h4>
+      <p>Active participation in your personalized care plan with full clinic support.</p>
+    </div>
+    <div class="journey-box">
+      <div class="step-num">05</div>
+      <h4>Maintenance</h4>
+      <p>Ongoing support and regular check-ins to ensure lasting health and well-being.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PAGE 6 — FEATURES ══ -->
+<section id="features">
+  <div class="features-heading">
+    <h2>Our Features</h2>
+    <p>Reach out for inquiries and appointments</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-box">
+      <h4>24/7 Emergency Response</h4>
+      <p>Round-the-clock emergency medical services ensuring immediate and expert care whenever you need it most.</p>
+    </div>
+    <div class="feature-box">
+      <h4>Specialist Consultations</h4>
+      <p>Access to a wide network of specialist physicians and healthcare professionals across multiple disciplines.</p>
+    </div>
+    <div class="feature-box">
+      <h4>Advanced Diagnostics</h4>
+      <p>State-of-the-art diagnostic equipment and laboratory services for accurate, timely results.</p>
+    </div>
+    <div class="feature-box">
+      <h4>Holistic Care Plans</h4>
+      <p>Integrated, patient-centered care plans that address physical, mental, and nutritional health together.</p>
+    </div>
+    <div class="feature-box">
+      <h4>Digital Health Records</h4>
+      <p>Secure, easily accessible electronic health records giving patients and providers seamless data continuity.</p>
+    </div>
+    <div class="feature-box">
+      <h4>Community Outreach</h4>
+      <p>Regular community health drives, workshops, and education programs serving the greater Vereeniging area.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PAGE 7 — CONTACT ══ -->
+<section id="contact">
+  <div class="contact-wrap">
+    <h2>Contact Us</h2>
+    <p>Reach out for inquiries and appointments</p>
+    <div class="form-field">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Your full name" />
+    </div>
+    <div class="form-field">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="you@example.com" />
+    </div>
+    <div class="form-field">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="+27 00 000 0000" />
+    </div>
+    <div class="form-field">
+      <label for="idnum">ID Number</label>
+      <input type="text" id="idnum" placeholder="South African ID number" />
+    </div>
+    <button class="submit-btn" type="button">Submit</button>
+  </div>
+</section>
+
+</body>
+</html>
